@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+using namespace std;
 
 template <typename T = double>
 class Array
@@ -29,10 +30,14 @@ public:
 
 	void FillArray();
 	void PrintArray();
-
-	int getSize() const 
+	
+	int GetSize() const 
 	{ 
 		return this->size; 
+	}
+	T GetElement(int index)
+	{
+		return ptr[index];
 	}
 
 	T& operator[] (int index)
@@ -44,7 +49,7 @@ public:
 		return index >= 0 && index < size ? ptr[index] : ptr[0];
 	}
 	Array operator+(const Array<T>& obj);
-
+	
 	static int GetInstanceCount()
 	{
 		return count;
@@ -130,6 +135,16 @@ Array<T>& Array<T>::operator=(const Array& obj)
 
 	++count;
 	return *this;
+}
+
+template <typename T>
+ostream& operator<<(ostream& os, Array<T>& obj)
+{
+	for (int i = 0; i < obj.GetSize(); i++)
+	{
+		os << obj.GetElement(i) << " ";
+	}
+	return os;
 }
 
 template <typename TInner>

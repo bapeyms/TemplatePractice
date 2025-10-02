@@ -15,11 +15,12 @@ int main(int argc, char** argv)
 	arr2.FillArray();
 	cout << "Array #2: ";
 	arr2.PrintArray();
+	cout << endl;
 
 	cout << "--- Operations ---" << endl;
 	Array<int> rez = arr1 + arr2;
 	cout << "Sum: ";
-	rez.PrintArray();
+	cout << rez;
 	cout << endl;
 
 	system("pause");
